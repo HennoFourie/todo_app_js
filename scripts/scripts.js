@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
@@ -91,5 +89,5 @@ list.addEventListener("click",function(event){
 
 let options = {weekday: 'long', month: 'short', day: 'numeric'};
 let today = new Date();
+
 dateElement.innerHTML = today.toLocaleDateString("en-US", options)
->>>>>>> Stashed changes
