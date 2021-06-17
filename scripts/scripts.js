@@ -65,3 +65,28 @@ list.addEventListener("click",function(event){
     removeToDo(element);
   }
 });
+
+// localStorage.setItem('key','value');
+// let variable = localStorage.getItem('key');
+
+// localStorage.setItem("TODO", JSON.stringify(list));
+
+// let list, id;
+// let data = localStorage.getItem("TODO");
+// if (data){
+//   list = JSON.parse(data);
+//   loadToDo(list);
+//   id = list.length;
+// } else {
+//   list = [];
+//   id = 0;
+// }
+
+// clear.addEventListener('click', function(){
+//   localStorage.clear();
+//   location.reload();
+// })
+
+let options = {weekday: 'long', month: 'short', day: 'numeric'};
+let today = new Date();
+dateElement.innerHTML = today.toLocaleDateString("en-US", options)
