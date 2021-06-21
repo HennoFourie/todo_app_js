@@ -4,14 +4,13 @@ body{
     background-color: rgba(0,0,0,0.1);
     font-family: 'Roboto', sans-serif;
 }
-
 .container{
     padding:10px;
-    width:380px;
-    margin:0 auto;
+    width: 800px;
+    margin: auto;
 }
 .header{
-    width: 380px;
+    width: auto;
     height:200px;
     background-image: url('../images/bg2.jpg');
     background-size: 100% 200%;
@@ -46,9 +45,9 @@ body{
 
 /* ------------ content ------------ */
 .content{
-    width:380px;
-    height: 350px;
-    max-height:350px;
+    width:autopx;
+    height: 500px;
+    max-height:500px;
     background-color: #FFF;
     overflow: auto;
 }
@@ -60,7 +59,7 @@ body{
     margin:0;
 }
 .item{
-    width:380px;
+    width:auto;
     height: 45px;
     min-height: 45px;
     position: relative;
@@ -110,8 +109,8 @@ body{
 /* ------------ add item ------------ */
 .add-to-do{
     position: relative;
-    width: 360px;
-    height:40px;
+    width: auto;
+    height: 55px;
     background-color: #FFF;
     padding: 10px;
     border-top: 1px solid rgba(0,0,0,0.1);
@@ -121,19 +120,13 @@ body{
     font-size: 40px;
     color: #4162f6;
 }
-
 .add-to-do input{
     position: absolute;
     left: 50px;
     height: 35px;
-    width: 310px;
+    width: 600px;
     background-color: transparent;
     border: none;
     font-size: 20px;
     padding-left:10px;
 }
-
-.add-to-do input::-webkit-input-placeholder {
-    color: #4162f6;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
