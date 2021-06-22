@@ -5,8 +5,8 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 .container{
-    padding:10px;
-    width: 800px;
+    padding:0.5%;
+    width: 100%;
     margin: auto;
 }
 .header{
@@ -22,8 +22,8 @@ body{
     width : 30px;
     height: 30px;
     position: absolute;
-    right:20px;
-    top: 20px;
+    right:3%;
+    top: 5%;
 }
 .clear i{
     font-size: 30px;
@@ -36,8 +36,8 @@ body{
 }
 #date{
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: 5%;
+    left: 3%;
     color: #FFF;
     font-size: 25px;
     font-family: 'Roboto', sans-serif;
@@ -45,7 +45,7 @@ body{
 
 /* ------------ content ------------ */
 .content{
-    width:autopx;
+    width:auto;
     height: 500px;
     max-height:500px;
     background-color: #FFF;
@@ -71,9 +71,10 @@ body{
 .item i.co{
     position: absolute;
     font-size: 25px;
-    padding-left:5px;
-    left:15px;
-    top:10px;
+    padding-left: 0%;
+    left: 10px;
+    top: auto;
+    bottom: auto;
 }
 .item i.co:hover{
     cursor: pointer;
@@ -81,15 +82,25 @@ body{
 .fa-check-circle{
     color:#6eb200;
 }
+.item p.date{
+    position: absolute;
+    padding:0;
+    margin:0;
+    font-size: 20px;
+    left: 50px;
+    top:5px;
+    background-color: #FFF;
+    max-width:150px;
+}
 .item p.text{
     position: absolute;
     padding:0;
     margin:0;
     font-size: 20px;
-    left:50px;
+    left: 170px;
     top:5px;
     background-color: #FFF;
-    max-width:285px;
+    max-width:400px;
 }
 .lineThrough{
     text-decoration: line-through;
@@ -120,11 +131,22 @@ body{
     font-size: 30px;
     color: #4162f6;
 }
-.add-to-do input{
+.add-to-do #duedate{
     position: absolute;
     left: 50px;
     height: 35px;
-    width: 600px;
+    width: 150px;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    padding-left:10px;
+}
+.add-to-do #input{
+    position: absolute;
+    left: 220px;
+    height: 35px;
+    width: 60%;
+    min-width: 300px;
     background-color: transparent;
     border: none;
     font-size: 20px;

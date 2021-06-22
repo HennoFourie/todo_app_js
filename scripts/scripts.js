@@ -32,7 +32,7 @@ if (data){
 // load items to the users interface
 function loadList(array){
   array.forEach(function(item){
-    addToDo(item.name, item.id, item.done, item.trash);
+    addToDo(item.name, item.duedate, item.id, item.done, item.trash);
   });
 }
 
@@ -49,7 +49,7 @@ let today = new Date();
 dateElement.innerHTML = today.toLocaleDateString("en-US", options);
 
 // add to do function
-function addToDo(toDo, id, done, trash) {
+function addToDo(toDo, duedate, id, done, trash) {
   if (trash) { return; }
 
   const DONE = done ? CHECK : UNCHECK;
@@ -57,6 +57,7 @@ function addToDo(toDo, id, done, trash) {
 
   const text = `<li class="item">
     <i class="${DONE} co" job="complete" id="${id}"></i>
+    <p class="date" ${LINE}> ${duedate} </p>
     <p class="text" ${LINE}> ${toDo} </p>
     <i class="bi bi-trash de" job="delete" id="${id}"></i>
   </li>`;
@@ -68,11 +69,13 @@ function addToDo(toDo, id, done, trash) {
 document.addEventListener("keyup", function (event) {
   if (event.keyCode == 13) {
     const toDo = input.value;
+    const date = duedate.value;
     // if the input isnt empty
-    if (toDo) {
-      addToDo(toDo, id, false, false);
+    if (toDo && date) {
+      addToDo(toDo, date, id, false, false);
       LIST.push({
           name: toDo,
+          duedate: date,
           id: id,
           done: false,
           trash: false,
@@ -80,6 +83,7 @@ document.addEventListener("keyup", function (event) {
       // add item to localstorage (code must be added where the LIST array is updated)
       localStorage.setItem("TODO", JSON.stringify(LIST));
       input.value = "";
+      duedate.value = null;
       id++;
     }
   }
@@ -89,7 +93,7 @@ document.addEventListener("keyup", function (event) {
 function completeToDo(element) {
   element.classList.toggle(CHECK);
   element.classList.toggle(UNCHECK);
-  element.parentNode.querySelector(".text").classList.toggle(LINETHROUGH);
+  element.parentNode.querySelector(".text",".duedate").classList.toggle(LINETHROUGH);
   LIST[element.id].done = LIST[element.id].done ? false : true;
 }
 
