@@ -5,9 +5,9 @@ const list = document.getElementById("list");
 const input = document.getElementById("input");
 
 // Classes names
-const CHECK = "fa-check-circle";
-const UNCHECK = "fa-circle-thin";
-const LINETHROUGH = "lineThough";
+const CHECK = "bi-check-circle-fill";
+const UNCHECK = "bi-check-circle";
+const LINETHROUGH = "lineThrough";
 
 // Variables
 let LIST, id;
@@ -56,9 +56,9 @@ function addToDo(toDo, id, done, trash) {
   const LINE = done ? LINETHROUGH : "";
 
   const text = `<li class="item">
-    <i class="fa ${DONE} complete" job="complete" id="${id}"></i>
+    <i class="${DONE} co" job="complete" id="${id}"></i>
     <p class="text" ${LINE}> ${toDo} </p>
-    <i class="de fa fa-trash-o" job="delete" id="${id}"></i>
+    <i class="bi bi-trash de" job="delete" id="${id}"></i>
   </li>`;
   const position = "beforeend";
   list.insertAdjacentHTML(position, text);
