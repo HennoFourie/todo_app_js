@@ -40,7 +40,23 @@ body{
     left: 3%;
     color: #FFF;
     font-size: 25px;
+    font-weight: bold;
     font-family: 'Roboto', sans-serif;
+}
+.sort{
+    width : 30px;
+    height: 30px;
+    position: absolute;
+    right:3%;
+    bottom: 10%;
+}
+.sort i{
+    font-size: 30px;
+    color: #FFF;
+}
+.sort i:hover{
+    cursor: pointer;
+    text-shadow: 1px 3px 5px #000;
 }
 
 /* ------------ content ------------ */
@@ -106,6 +122,16 @@ body{
     text-decoration: line-through;
     color : #ccc;
 }
+.item i.edit{
+    position: absolute;
+    font-size: 25px;
+    right:55px;
+    top:10px;
+}
+.item i.edit:hover{
+    color:#4162f6;
+    cursor: pointer;
+}
 .item i.de{
     position: absolute;
     font-size: 25px;
@@ -152,3 +178,16 @@ body{
     font-size: 20px;
     padding-left:10px;
 }
+
+/* ------------ edit item ------------ */
+/* ul li input[type=text] {
+    display:none;
+  }
+  
+  ul li.editMode input[type=text] {
+    display:block;
+  }
+  
+  ul li.editMode label {
+    display:none;
+  } */

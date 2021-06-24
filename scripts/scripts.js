@@ -3,6 +3,8 @@ const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("input");
+const sort = document.querySelector(".sort");
+// var editButton = document.getElementById("button");
 
 // Classes names
 const CHECK = "bi-check-circle-fill";
@@ -59,6 +61,7 @@ function addToDo(toDo, duedate, id, done, trash) {
     <i class="${DONE} co" job="complete" id="${id}"></i>
     <p class="date" ${LINE}> ${duedate} </p>
     <p class="text" ${LINE}> ${toDo} </p>
+    <i class="bi bi-pencil-square edit" job="edit" id="${id}"></i>
     <i class="bi bi-trash de" job="delete" id="${id}"></i>
   </li>`;
   const position = "beforeend";
@@ -97,11 +100,38 @@ function completeToDo(element) {
   LIST[element.id].done = LIST[element.id].done ? false : true;
 }
 
+//Edit an existing task
+function editToDo(element) {
+  // var editItem = this.parentNode;
+  // var editInput = editItem.querySelector("input[type=text");
+  // var label = editItem.querySelector("id");
+  
+  // var containsClass = editItem.classList.contains("editMode");
+  
+  // //if the class of the parent is .editMode
+  // if(containsClass) {
+  //   //Switch from .editMode
+  //   //label text become the input's value
+  //   label.innerText = editInput.value;
+  // } else {
+  //   //Switch to .editMode
+  //   //input value becomes the label's text
+  //   editInput.value = label.innerText;
+  // }
+  // //Toggle .editMode on the list item
+  // editItem.classList.toggle("editMode");
+}
+
 // remove to do
 function removeToDo(element) {
   element.parentNode.parentNode.removeChild(element.parentNode);
   LIST[element.id].trash = true;
 }
+
+// sort to do
+sort.addEventListener('click', function(){
+  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.duedate > b.duedate) ? 1 : -1) : -1 )
+})
 
 // target the items created dynamically
 list.addEventListener("click", function (event) {
@@ -111,6 +141,8 @@ list.addEventListener("click", function (event) {
     completeToDo(element);
   } else if (elementJob == "delete") {
     removeToDo(element);
+  } else if (elementJob == "edit") {
+    editToDo(element);
   }
   // add item to localstorage (code must be added where the LIST array is updated)
 localStorage.setItem("TODO", JSON.stringify(LIST));
