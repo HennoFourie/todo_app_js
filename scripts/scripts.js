@@ -28,9 +28,6 @@ if (data){
   id = 0;
 }
 
-// add item to localstorage (code must be added where the LIST array is updated)
-// localStorage.setItem("TODO", JSON.stringify(LIST)));
-
 // load items to the users interface
 function loadList(array){
   array.forEach(function(item){
@@ -68,28 +65,38 @@ function addToDo(toDo, duedate, id, done, trash) {
   list.insertAdjacentHTML(position, text);
 }
 
-// add an item to list user the enter key
+// function to add item to list
+function additem() {
+  const toDo = input.value;
+  const date = duedate.value;
+  // if the input isnt empty
+  if (toDo && date) {
+    addToDo(toDo, date, id, false, false);
+    LIST.push({
+        name: toDo,
+        duedate: date,
+        id: id,
+        done: false,
+        trash: false,
+    });
+    // add item to localstorage (code must be added where the LIST array is updated)
+    localStorage.setItem("TODO", JSON.stringify(LIST));
+    input.value = "";
+    duedate.value = null;
+    id++;
+  }
+}
+
+// add an item to list user press the enter key
 document.addEventListener("keyup", function (event) {
   if (event.keyCode == 13) {
-    const toDo = input.value;
-    const date = duedate.value;
-    // if the input isnt empty
-    if (toDo && date) {
-      addToDo(toDo, date, id, false, false);
-      LIST.push({
-          name: toDo,
-          duedate: date,
-          id: id,
-          done: false,
-          trash: false,
-      });
-      // add item to localstorage (code must be added where the LIST array is updated)
-      localStorage.setItem("TODO", JSON.stringify(LIST));
-      input.value = "";
-      duedate.value = null;
-      id++;
-    }
+    additem();
   }
+});
+
+// add an item to list user press plus key
+document.getElementById('addinput').addEventListener('click', function(){
+  additem();
 });
 
 // complete to do
@@ -147,7 +154,7 @@ list.addEventListener("click", function (event) {
     removeToDo(element);
   } else if (elementJob == "edit") {
     editToDo(element);
-  }
+  } 
   // add item to localstorage (code must be added where the LIST array is updated)
 localStorage.setItem("TODO", JSON.stringify(LIST));
 });
