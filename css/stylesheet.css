@@ -157,6 +157,11 @@ body{
     font-size: 30px;
     color: #4162f6;
 }
+.add-to-do i:hover{
+    cursor: pointer;
+    text-shadow: 1px 3px 5px #000;
+    transform: scale(1.2);
+}
 .add-to-do #duedate{
     position: absolute;
     left: 50px;
