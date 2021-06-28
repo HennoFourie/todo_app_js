@@ -18,7 +18,7 @@ let LIST, id;
 let data = localStorage.getItem("TODO");
 
 // check if data is not empty
-if (data){
+if (data) {
   LIST = JSON.parse(data);
   id = LIST.length; // set the id to the last one in the list
   loadList(LIST); // load the list fo the user interface
@@ -29,14 +29,14 @@ if (data){
 }
 
 // load items to the users interface
-function loadList(array){
-  array.forEach(function(item){
+function loadList(array) {
+  array.forEach(function (item) {
     addToDo(item.name, item.duedate, item.id, item.done, item.trash);
   });
 }
 
 // clear the localstorage
-clear.addEventListener('click', function(){
+clear.addEventListener('click', function () {
   localStorage.clear();
   location.reload();
 })
@@ -73,11 +73,11 @@ function additem() {
   if (toDo && date) {
     addToDo(toDo, date, id, false, false);
     LIST.push({
-        name: toDo,
-        duedate: date,
-        id: id,
-        done: false,
-        trash: false,
+      name: toDo,
+      duedate: date,
+      id: id,
+      done: false,
+      trash: false,
     });
     // add item to localstorage (code must be added where the LIST array is updated)
     localStorage.setItem("TODO", JSON.stringify(LIST));
@@ -95,7 +95,7 @@ document.addEventListener("keyup", function (event) {
 });
 
 // add an item to list user press plus key
-document.getElementById('addinput').addEventListener('click', function(){
+document.getElementById('addinput').addEventListener('click', function () {
   additem();
 });
 
@@ -103,7 +103,7 @@ document.getElementById('addinput').addEventListener('click', function(){
 function completeToDo(element) {
   element.classList.toggle(CHECK);
   element.classList.toggle(UNCHECK);
-  element.parentNode.querySelector(".text",".duedate").classList.toggle(LINETHROUGH);
+  element.parentNode.querySelector(".text", ".duedate").classList.toggle(LINETHROUGH);
   LIST[element.id].done = LIST[element.id].done ? false : true;
 }
 
@@ -112,9 +112,9 @@ function editToDo(element) {
   // var editItem = this.parentNode;
   // var editInput = editItem.querySelector("input[type=text");
   // var label = editItem.querySelector("id");
-  
+
   // var containsClass = editItem.classList.contains("editMode");
-  
+
   // //if the class of the parent is .editMode
   // if(containsClass) {
   //   //Switch from .editMode
@@ -136,8 +136,8 @@ function removeToDo(element) {
 }
 
 // sort to do
-sort.addEventListener('click', function(){
-  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.duedate > b.duedate) ? 1 : -1) : -1 );
+sort.addEventListener('click', function () {
+  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.duedate > b.duedate) ? 1 : -1) : -1);
   localStorage.clear();
   location.reload();
   // add item to localstorage (code must be added where the LIST array is updated)
@@ -154,7 +154,7 @@ list.addEventListener("click", function (event) {
     removeToDo(element);
   } else if (elementJob == "edit") {
     editToDo(element);
-  } 
+  }
   // add item to localstorage (code must be added where the LIST array is updated)
-localStorage.setItem("TODO", JSON.stringify(LIST));
+  localStorage.setItem("TODO", JSON.stringify(LIST));
 });
