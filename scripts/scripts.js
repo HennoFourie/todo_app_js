@@ -130,7 +130,11 @@ function removeToDo(element) {
 
 // sort to do
 sort.addEventListener('click', function(){
-  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.duedate > b.duedate) ? 1 : -1) : -1 )
+  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.duedate > b.duedate) ? 1 : -1) : -1 );
+  localStorage.clear();
+  location.reload();
+  // add item to localstorage (code must be added where the LIST array is updated)
+  localStorage.setItem("TODO", JSON.stringify(LIST));
 })
 
 // target the items created dynamically
