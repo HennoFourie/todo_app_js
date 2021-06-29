@@ -4,7 +4,6 @@ const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("input");
 const sort = document.querySelector(".sort");
-// var editButton = document.getElementById("button");
 
 // Classes names
 const CHECK = "bi-check-circle-fill";
@@ -109,24 +108,33 @@ function completeToDo(element) {
 
 //Edit an existing task
 function editToDo(element) {
-  // var editItem = this.parentNode;
-  // var editInput = editItem.querySelector("input[type=text");
-  // var label = editItem.querySelector("id");
+  console.log("Edit in process")
 
-  // var containsClass = editItem.classList.contains("editMode");
+  let listItem = element.parentNode;
+  console.log(listItem)
+  let editInput = listItem.querySelector("[class=text]");
+  console.log(editInput)
+  let editDate = listItem.querySelector("[class=date]");
+  console.log(editDate)
+  let label = LIST[element.id].id;
+  console.log(label)
+  let containsClass = listItem.classList.contains("editMode");
+  console.log(containsClass)
 
-  // //if the class of the parent is .editMode
-  // if(containsClass) {
-  //   //Switch from .editMode
-  //   //label text become the input's value
-  //   label.innerText = editInput.value;
-  // } else {
-  //   //Switch to .editMode
-  //   //input value becomes the label's text
-  //   editInput.value = label.innerText;
-  // }
-  // //Toggle .editMode on the list item
-  // editItem.classList.toggle("editMode");
+  // if the listItem element contains the editMode class
+  if (containsClass) {
+      //Switch from .editMode
+      //label text become the input's value
+      label.innerText = editInput.value;
+      label.innerText = editDate.value;
+  } else {
+      //Switch to .editMode
+      //input value becomes the labels text
+      editInput.value = label.innerText;
+      editDate.value = label.innerText;
+  }
+  //Toggle .editMode class on and off
+  listItem.classList.toggle("editMode");
 }
 
 // remove to do
