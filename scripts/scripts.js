@@ -55,8 +55,8 @@ function addToDo(toDo, duedate, id, done, trash) {
 
   const text = `<li class="item">
     <i class="${DONE} co" job="complete" id="${id}"></i>
-    <p class="date" ${LINE}> ${duedate} </p>
-    <p class="text" ${LINE}> ${toDo} </p>
+    <input type="date" class="date" ${LINE} value="${duedate}" disabled="true">
+    <input type="text" class="text" ${LINE} value="${toDo}" disabled="true">
     <i class="bi bi-pencil-square edit" job="edit" id="${id}"></i>
     <i class="bi bi-trash de" job="delete" id="${id}"></i>
   </li>`;
@@ -108,33 +108,22 @@ function completeToDo(element) {
 
 //Edit an existing task
 function editToDo(element) {
-  console.log("Edit in process")
-
   let listItem = element.parentNode;
-  console.log(listItem)
-  let editInput = listItem.querySelector("[class=text]");
-  console.log(editInput)
-  let editDate = listItem.querySelector("[class=date]");
-  console.log(editDate)
-  let label = LIST[element.id].id;
-  console.log(label)
-  let containsClass = listItem.classList.contains("editMode");
-  console.log(containsClass)
-
-  // if the listItem element contains the editMode class
-  if (containsClass) {
-      //Switch from .editMode
-      //label text become the input's value
-      label.innerText = editInput.value;
-      label.innerText = editDate.value;
+  let inputStatus = listItem.querySelector("[class=text]").disabled;
+  let dateStatus = listItem.querySelector("[class=date]").disabled;
+  // toggle disable input status
+  if (inputStatus == true && dateStatus == true) {
+    listItem.querySelector("[class=text]").disabled = false;
+    listItem.querySelector("[class=date]").disabled = false;
   } else {
-      //Switch to .editMode
-      //input value becomes the labels text
-      editInput.value = label.innerText;
-      editDate.value = label.innerText;
+    let editInput = listItem.querySelector("[class=text]").value;
+    let editDate = listItem.querySelector("[class=date]").value;
+    LIST[element.id].name = editInput;
+    LIST[element.id].duedate = editDate;
+
+    listItem.querySelector("[class=text]").disabled = true;
+    listItem.querySelector("[class=date]").disabled = true;
   }
-  //Toggle .editMode class on and off
-  listItem.classList.toggle("editMode");
 }
 
 // remove to do
@@ -145,7 +134,8 @@ function removeToDo(element) {
 
 // sort to do
 sort.addEventListener('click', function () {
-  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.duedate > b.duedate) ? 1 : -1) : -1);
+  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? 
+    ((a.duedate > b.duedate) ? 1 : -1) : -1);
   localStorage.clear();
   location.reload();
   // add item to localstorage (code must be added where the LIST array is updated)
