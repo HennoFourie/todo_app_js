@@ -106,17 +106,17 @@ body{
     left: 50px;
     top:5px;
     background-color: #FFF;
-    max-width:150px;
+    max-width:160px;
 }
 .item input.text{
     position: absolute;
     padding:0;
     margin:0;
     font-size: 20px;
-    left: 205px;
+    left: 220px;
     top:5px;
     background-color: #FFF;
-    /* max-width:auto; */
+    width: 60%;
     overflow-wrap: break-word;
 }
 .lineThrough{

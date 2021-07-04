@@ -134,7 +134,7 @@ function removeToDo(element) {
 
 // sort to do
 sort.addEventListener('click', function () {
-  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? 
+  LIST.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ?
     ((a.duedate > b.duedate) ? 1 : -1) : -1);
   localStorage.clear();
   location.reload();
